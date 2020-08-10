@@ -4,14 +4,16 @@ const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
 
-var paper , ground , dustbin1, dustbin2 , dustbin2;
+var paper , ground , invisibleground ,  dustbin1, dustbin2 , dustbin3;
 
 function preload()
 {
+  
 	
 }
 
 function setup() {
+  
 	var canvas = createCanvas(800, 700);
 
 
@@ -19,11 +21,11 @@ function setup() {
 	world = engine.world;
 
 	
-paper = new Paper(200,600,30,keyPressed());
-ground = new Ground(400,650,800,10);
-dustbin1 = new Dustbin(780,595,20,100);
-dustbin2 = new Dustbin(600,595,20,100);
-dustbin3 = new Dustbin(690,635,200,20);
+paper = new Paper(250,50,70,keyPressed());
+ground = new Ground(400,670,800,50);
+dustbin1 = new Dustbin(780,555,20,170);
+dustbin2 = new Dustbin(600,555,20,170);
+dustbin3 = new Dustbin(690,650,200,20);
 
 	Engine.run(engine);
   
@@ -34,12 +36,13 @@ dustbin3 = new Dustbin(690,635,200,20);
 function draw() {
   rectMode(CENTER);
 Engine.update(engine);
-  background("black");
+  background("yellow");
 
   
 
-  ground.display();
+  
   paper.display();
+  ground.display();
 dustbin1.display();
 dustbin2.display();
 dustbin3.display(); 
@@ -50,7 +53,7 @@ function keyPressed()
 {
    if(keyCode == UP_ARROW)
   {
-Matter.Body.applyForce(paper.body,paper.position,{x:200 , y:-100});
+Matter.Body.applyForce(paper.body,paper.position,{x:700 , y:-840});
 
 
 
